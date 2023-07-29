@@ -1,0 +1,14 @@
+.modal__property {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  margin-top: 27px;
+}
+
+@media (max-width: 592px) {
+  .modal__property {
+    margin-top: 47px;
+  }
+}

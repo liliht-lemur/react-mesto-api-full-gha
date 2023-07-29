@@ -1,0 +1,14 @@
+.element {
+  display: flex;
+  flex-direction: column;
+  width: 282px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .element {
+    justify-self: center;
+  }
+}

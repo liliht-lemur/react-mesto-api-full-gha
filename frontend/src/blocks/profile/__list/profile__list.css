@@ -1,0 +1,16 @@
+.profile__list {
+  display: flex;
+  position: relative;
+}
+@media (max-width: 528px) {
+  .profile__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+}
+@media (max-width: 320px) {
+  .profile__list {
+    gap: 26px;
+  }
+}

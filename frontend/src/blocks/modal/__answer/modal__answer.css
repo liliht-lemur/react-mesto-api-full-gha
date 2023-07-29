@@ -1,0 +1,12 @@
+.modal__answer {
+  width: 120px;
+  height: 120px;
+  padding: 26px 119px 32px;
+  margin: 0 auto;
+}
+
+@media (max-width: 592px) {
+  .modal__answer {
+    padding: 25px 58px 40px;
+  }
+}

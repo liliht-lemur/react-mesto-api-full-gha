@@ -1,0 +1,26 @@
+.button_edit {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #FFFFFF;
+    position: absolute;
+    right: -42px;
+    top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  @media (max-width: 566px) {
+    .button_edit {
+      right: -14px;
+      top: 15px;
+    }
+  }
+  @media (max-width: 370px) {
+    .button_edit {
+      width: 18px;
+      height: 18px;
+      right: 19px;
+      top: 12px;
+    }
+  }
