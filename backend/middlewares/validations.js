@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const RegExp = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-/])*)?/;
+const ValidationUriRegExp = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-/])*)?/;
 
 const validationLogin = celebrate({
   body: Joi.object().keys({
@@ -13,7 +13,7 @@ const validationCreateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(RegExp),
+    avatar: Joi.string().pattern(ValidationUriRegExp),
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }),
@@ -27,21 +27,21 @@ const validationUserId = celebrate({
 
 const validationUpdateUser = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    name: Joi.string().required().min(2).max(30),
+    about: Joi.string().required().min(2).max(30),
   }),
 });
 
 const validationUpdateAvatar = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().pattern(RegExp),
+    avatar: Joi.string().required().pattern(ValidationUriRegExp),
   }),
 });
 
 const validationCreateCard = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    link: Joi.string().required().pattern(RegExp),
+    link: Joi.string().required().pattern(ValidationUriRegExp),
   }),
 });
 
