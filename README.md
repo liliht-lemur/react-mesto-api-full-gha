@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.73.245
+IP 158.160.73.245
 
 Frontend https://liliht.nomoredomains.sbs
 
