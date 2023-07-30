@@ -4,23 +4,30 @@ const {
   messageError, codeError,
 } = require('../errors/errors');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
-  let payload;
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    return res.status(codeError.UNAUTHORIZED).send(messageError.unauthorized);
+    return next(new UnAuthorizedError(messageError.unauthorized));
   }
 
   const token = authorization.replace('Bearer ', '');
+  let payload;
+
   try {
-    payload = jwt.verify(token, 'some-secret-key');
+    payload = jwt.verify(
+      token,
+      NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
+    );
   } catch (err) {
-    return res.status(codeError.UNAUTHORIZED).send(messageError.unauthorized);
+    next(new UnAuthorizedError(messageError.unauthorized));
   }
 
   req.user = payload;
-  next();
+
+  return next();
 };
 
 module.exports = auth;
